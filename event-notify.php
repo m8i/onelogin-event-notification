@@ -31,7 +31,7 @@
 		foreach ($http_result->event as $event) {
 			$notes=(string)$event->notes;
 			$date=strtotime($event->{'created-at'});
-			if (strlen($notes) > 10 && $date >= $hourago) {
+			if (strlen($notes) > 10 && $date >= $hourago && strlen($event->{'actor-system'}) > 5 ) {
 				$output .= $event->{'actor-system'} . " at ". date("g:i a",$date).": " . $notes."\n\n";
 				$i_echoed=1;
 			}
